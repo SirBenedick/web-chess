@@ -1,0 +1,77 @@
+<h1>{{ updateMessage }}</h1>
+<button (click)="getAktuelleBelegung()">Aktuelle Belegung</button>
+
+<div class="chessboard">
+<!-- 8 -->
+<div id="a8" [ngClass] = "chessBoard.tiles.a8.class" (click)="onSelect(chessBoard.tiles.a8)" [innerHTML]="chessBoard.tiles.a8.piece"></div>
+<div id="b8" [ngClass] = "chessBoard.tiles.b8.class" (click)="onSelect(chessBoard.tiles.b8)" [innerHTML]="chessBoard.tiles.b8.piece"></div>
+<div id="c8" [ngClass] = "chessBoard.tiles.c8.class" (click)="onSelect(chessBoard.tiles.c8)" [innerHTML]="chessBoard.tiles.c8.piece"></div>
+<div id="d8" [ngClass] = "chessBoard.tiles.d8.class" (click)="onSelect(chessBoard.tiles.d8)" [innerHTML]="chessBoard.tiles.d8.piece"></div>
+<div id="e8" [ngClass] = "chessBoard.tiles.e8.class" (click)="onSelect(chessBoard.tiles.e8)" [innerHTML]="chessBoard.tiles.e8.piece"></div>
+<div id="f8" [ngClass] = "chessBoard.tiles.f8.class" (click)="onSelect(chessBoard.tiles.f8)" [innerHTML]="chessBoard.tiles.f8.piece"></div>
+<div id="g8" [ngClass] = "chessBoard.tiles.g8.class" (click)="onSelect(chessBoard.tiles.g8)" [innerHTML]="chessBoard.tiles.g8.piece"></div>
+<div id="h8" [ngClass] = "chessBoard.tiles.h8.class" (click)="onSelect(chessBoard.tiles.h8)" [innerHTML]="chessBoard.tiles.h8.piece"></div>
+<!-- 7 -->
+<div id="a7" [ngClass] = "chessBoard.tiles.a7.class" (click)="onSelect(chessBoard.tiles.a7)" [innerHTML]="chessBoard.tiles.a7.piece"></div>
+<div id="b7" [ngClass] = "chessBoard.tiles.b7.class" (click)="onSelect(chessBoard.tiles.b7)" [innerHTML]="chessBoard.tiles.b7.piece"></div>
+<div id="c7" [ngClass] = "chessBoard.tiles.c7.class" (click)="onSelect(chessBoard.tiles.c7)" [innerHTML]="chessBoard.tiles.c7.piece"></div>
+<div id="d7" [ngClass] = "chessBoard.tiles.d7.class" (click)="onSelect(chessBoard.tiles.d7)" [innerHTML]="chessBoard.tiles.d7.piece"></div>
+<div id="e7" [ngClass] = "chessBoard.tiles.e7.class" (click)="onSelect(chessBoard.tiles.e7)" [innerHTML]="chessBoard.tiles.e7.piece"></div>
+<div id="f7" [ngClass] = "chessBoard.tiles.f7.class" (click)="onSelect(chessBoard.tiles.f7)" [innerHTML]="chessBoard.tiles.f7.piece"></div>
+<div id="g7" [ngClass] = "chessBoard.tiles.g7.class" (click)="onSelect(chessBoard.tiles.g7)" [innerHTML]="chessBoard.tiles.g7.piece"></div>
+<div id="h7" [ngClass] = "chessBoard.tiles.h7.class" (click)="onSelect(chessBoard.tiles.h7)" [innerHTML]="chessBoard.tiles.h7.piece"></div>
+<!-- 6 -->
+<div id="a6" [ngClass] = "chessBoard.tiles.a6.class" (click)="onSelect(chessBoard.tiles.a6)" [innerHTML]="chessBoard.tiles.a6.piece"></div>
+<div id="b6" [ngClass] = "chessBoard.tiles.b6.class" (click)="onSelect(chessBoard.tiles.b6)" [innerHTML]="chessBoard.tiles.b6.piece"></div>
+<div id="c6" [ngClass] = "chessBoard.tiles.c6.class" (click)="onSelect(chessBoard.tiles.c6)" [innerHTML]="chessBoard.tiles.c6.piece"></div>
+<div id="d6" [ngClass] = "chessBoard.tiles.d6.class" (click)="onSelect(chessBoard.tiles.d6)" [innerHTML]="chessBoard.tiles.d6.piece"></div>
+<div id="e6" [ngClass] = "chessBoard.tiles.e6.class" (click)="onSelect(chessBoard.tiles.e6)" [innerHTML]="chessBoard.tiles.e6.piece"></div>
+<div id="f6" [ngClass] = "chessBoard.tiles.f6.class" (click)="onSelect(chessBoard.tiles.f6)" [innerHTML]="chessBoard.tiles.f6.piece"></div>
+<div id="g6" [ngClass] = "chessBoard.tiles.g6.class" (click)="onSelect(chessBoard.tiles.g6)" [innerHTML]="chessBoard.tiles.g6.piece"></div>
+<div id="h6" [ngClass] = "chessBoard.tiles.h6.class" (click)="onSelect(chessBoard.tiles.h6)" [innerHTML]="chessBoard.tiles.h6.piece"></div>
+<!-- 5 -->
+<div id="a5" [ngClass] = "chessBoard.tiles.a5.class" (click)="onSelect(chessBoard.tiles.a5)" [innerHTML]="chessBoard.tiles.a5.piece"></div>
+<div id="b5" [ngClass] = "chessBoard.tiles.b5.class" (click)="onSelect(chessBoard.tiles.b5)" [innerHTML]="chessBoard.tiles.b5.piece"></div>
+<div id="c5" [ngClass] = "chessBoard.tiles.c5.class" (click)="onSelect(chessBoard.tiles.c5)" [innerHTML]="chessBoard.tiles.c5.piece"></div>
+<div id="d5" [ngClass] = "chessBoard.tiles.d5.class" (click)="onSelect(chessBoard.tiles.d5)" [innerHTML]="chessBoard.tiles.d5.piece"></div>
+<div id="e5" [ngClass] = "chessBoard.tiles.e5.class" (click)="onSelect(chessBoard.tiles.e5)" [innerHTML]="chessBoard.tiles.e5.piece"></div>
+<div id="f5" [ngClass] = "chessBoard.tiles.f5.class" (click)="onSelect(chessBoard.tiles.f5)" [innerHTML]="chessBoard.tiles.f5.piece"></div>
+<div id="g5" [ngClass] = "chessBoard.tiles.g5.class" (click)="onSelect(chessBoard.tiles.g5)" [innerHTML]="chessBoard.tiles.g5.piece"></div>
+<div id="h5" [ngClass] = "chessBoard.tiles.h5.class" (click)="onSelect(chessBoard.tiles.h5)" [innerHTML]="chessBoard.tiles.h5.piece"></div>
+<!-- 4 -->
+<div id="a4" [ngClass] = "chessBoard.tiles.a4.class" (click)="onSelect(chessBoard.tiles.a4)" [innerHTML]="chessBoard.tiles.a4.piece"></div>
+<div id="b4" [ngClass] = "chessBoard.tiles.b4.class" (click)="onSelect(chessBoard.tiles.b4)" [innerHTML]="chessBoard.tiles.b4.piece"></div>
+<div id="c4" [ngClass] = "chessBoard.tiles.c4.class" (click)="onSelect(chessBoard.tiles.c4)" [innerHTML]="chessBoard.tiles.c4.piece"></div>
+<div id="d4" [ngClass] = "chessBoard.tiles.d4.class" (click)="onSelect(chessBoard.tiles.d4)" [innerHTML]="chessBoard.tiles.d4.piece"></div>
+<div id="e4" [ngClass] = "chessBoard.tiles.e4.class" (click)="onSelect(chessBoard.tiles.e4)" [innerHTML]="chessBoard.tiles.e4.piece"></div>
+<div id="f4" [ngClass] = "chessBoard.tiles.f4.class" (click)="onSelect(chessBoard.tiles.f4)" [innerHTML]="chessBoard.tiles.f4.piece"></div>
+<div id="g4" [ngClass] = "chessBoard.tiles.g4.class" (click)="onSelect(chessBoard.tiles.g4)" [innerHTML]="chessBoard.tiles.g4.piece"></div>
+<div id="h4" [ngClass] = "chessBoard.tiles.h4.class" (click)="onSelect(chessBoard.tiles.h4)" [innerHTML]="chessBoard.tiles.h4.piece"></div>
+<!-- 3 -->
+<div id="a3" [ngClass] = "chessBoard.tiles.a3.class" (click)="onSelect(chessBoard.tiles.a3)" [innerHTML]="chessBoard.tiles.a3.piece"></div>
+<div id="b3" [ngClass] = "chessBoard.tiles.b3.class" (click)="onSelect(chessBoard.tiles.b3)" [innerHTML]="chessBoard.tiles.b3.piece"></div>
+<div id="c3" [ngClass] = "chessBoard.tiles.c3.class" (click)="onSelect(chessBoard.tiles.c3)" [innerHTML]="chessBoard.tiles.c3.piece"></div>
+<div id="d3" [ngClass] = "chessBoard.tiles.d3.class" (click)="onSelect(chessBoard.tiles.d3)" [innerHTML]="chessBoard.tiles.d3.piece"></div>
+<div id="e3" [ngClass] = "chessBoard.tiles.e3.class" (click)="onSelect(chessBoard.tiles.e3)" [innerHTML]="chessBoard.tiles.e3.piece"></div>
+<div id="f3" [ngClass] = "chessBoard.tiles.f3.class" (click)="onSelect(chessBoard.tiles.f3)" [innerHTML]="chessBoard.tiles.f3.piece"></div>
+<div id="g3" [ngClass] = "chessBoard.tiles.g3.class" (click)="onSelect(chessBoard.tiles.g3)" [innerHTML]="chessBoard.tiles.g3.piece"></div>
+<div id="h3" [ngClass] = "chessBoard.tiles.h3.class" (click)="onSelect(chessBoard.tiles.h3)" [innerHTML]="chessBoard.tiles.h3.piece"></div>
+<!-- 2 -->
+<div id="a2" [ngClass] = "chessBoard.tiles.a2.class" (click)="onSelect(chessBoard.tiles.a2)" [innerHTML]="chessBoard.tiles.a2.piece"></div>
+<div id="b2" [ngClass] = "chessBoard.tiles.b2.class" (click)="onSelect(chessBoard.tiles.b2)" [innerHTML]="chessBoard.tiles.b2.piece"></div>
+<div id="c2" [ngClass] = "chessBoard.tiles.c2.class" (click)="onSelect(chessBoard.tiles.c2)" [innerHTML]="chessBoard.tiles.c2.piece"></div>
+<div id="d2" [ngClass] = "chessBoard.tiles.d2.class" (click)="onSelect(chessBoard.tiles.d2)" [innerHTML]="chessBoard.tiles.d2.piece"></div>
+<div id="e2" [ngClass] = "chessBoard.tiles.e2.class" (click)="onSelect(chessBoard.tiles.e2)" [innerHTML]="chessBoard.tiles.e2.piece"></div>
+<div id="f2" [ngClass] = "chessBoard.tiles.f2.class" (click)="onSelect(chessBoard.tiles.f2)" [innerHTML]="chessBoard.tiles.f2.piece"></div>
+<div id="g2" [ngClass] = "chessBoard.tiles.g2.class" (click)="onSelect(chessBoard.tiles.g2)" [innerHTML]="chessBoard.tiles.g2.piece"></div>
+<div id="h2" [ngClass] = "chessBoard.tiles.h2.class" (click)="onSelect(chessBoard.tiles.h2)" [innerHTML]="chessBoard.tiles.h2.piece"></div>
+<!-- 1 -->
+<div id="a1" [ngClass] = "chessBoard.tiles.a1.class" (click)="onSelect(chessBoard.tiles.a1)" [innerHTML]="chessBoard.tiles.a1.piece"></div>
+<div id="b1" [ngClass] = "chessBoard.tiles.b1.class" (click)="onSelect(chessBoard.tiles.b1)" [innerHTML]="chessBoard.tiles.b1.piece"></div>
+<div id="c1" [ngClass] = "chessBoard.tiles.c1.class" (click)="onSelect(chessBoard.tiles.c1)" [innerHTML]="chessBoard.tiles.c1.piece"></div>
+<div id="d1" [ngClass] = "chessBoard.tiles.d1.class" (click)="onSelect(chessBoard.tiles.d1)" [innerHTML]="chessBoard.tiles.d1.piece"></div>
+<div id="e1" [ngClass] = "chessBoard.tiles.e1.class" (click)="onSelect(chessBoard.tiles.e1)" [innerHTML]="chessBoard.tiles.e1.piece"></div>
+<div id="f1" [ngClass] = "chessBoard.tiles.f1.class" (click)="onSelect(chessBoard.tiles.f1)" [innerHTML]="chessBoard.tiles.f1.piece"></div>
+<div id="g1" [ngClass] = "chessBoard.tiles.g1.class" (click)="onSelect(chessBoard.tiles.g1)" [innerHTML]="chessBoard.tiles.g1.piece"></div>
+<div id="h1" [ngClass] = "chessBoard.tiles.h1.class" (click)="onSelect(chessBoard.tiles.h1)" [innerHTML]="chessBoard.tiles.h1.piece"></div>
+</div>

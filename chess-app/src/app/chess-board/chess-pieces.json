@@ -1,0 +1,21 @@
+{
+    "whiteKing": "&#9812;",
+    "blackKing": "&#9818;",
+    "whiteQueen": "&#9813;",
+    "blackQueen": "&#9819;",
+    "whiteRock": "&#9814;",
+    "blackRock": "&#9820;",
+    "whiteBishop": "&#9815;",
+    "blackBishop": "&#9821;",
+    "whiteKnight": "&#9816;",
+    "blackKnight": "&#9822;",
+    "whitePawn": "&#9817;",
+    "blackPawn": "&#9823;",
+
+    "Koenig" : ["&#9812;", "&#9818;"],
+    "Dame" : ["&#9813;", "&#9819;"],
+    "Turm" : ["&#9814;", "&#9820;"],
+    "Laeufer" : ["&#9815;", "&#9821;"],
+    "Springer" : ["&#9816;", "&#9822;"],
+    "Bauer" : ["&#9817;", "&#9823;"]
+  }
