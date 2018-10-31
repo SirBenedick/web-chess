@@ -25,8 +25,5 @@
     vertical-align:middle;
 }
 .highlight {
-    outline:5px solid #c56200;
-    /* background-color: #2c9cd8;
-     */
-
+    box-shadow:inset 0px 0px 0px 5px mediumspringgreen;
 }
