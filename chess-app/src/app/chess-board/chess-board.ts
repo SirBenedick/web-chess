@@ -343,7 +343,7 @@ export class ChessBoard {
     for (var _i = 1; _i < Object.keys(array).length; _i++) {
       let entry = array[_i]["entry"];
 
-      if(entry[0] != ""){
+      if (entry[0] != "") {
         this.tiles[entry[0]].piece = this.mapPiece(entry[1], entry[2]);
       }
     }
@@ -351,7 +351,6 @@ export class ChessBoard {
 
   highlightTiles(json: JSON): void {
     console.log("highlightTiles");
-    //behandle Fall 1 möglichen Zug oder mehrere (schneidet 'propertiesarray' ab)
 
     this.clearAllHighlights();
 
@@ -393,6 +392,10 @@ export class ChessBoard {
   }
 
   handlePropertiesArray(json: JSON): JSON {
+    //behandle Fall 1 möglichen Zug oder mehrere (schneidet 'propertiesarray' ab)
+    if (json == undefined) {
+      return null;
+    }
     if (json.hasOwnProperty("propertiesarray")) {
       console.log("has array");
       return json["propertiesarray"];

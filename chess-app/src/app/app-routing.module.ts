@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChessBoardComponent }      from './chess-board/chess-board.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/chessboard', pathMatch: 'full' },
-  { path: 'chessboard', component: ChessBoardComponent }
+  //{ path: '', redirectTo: '/chessboard', pathMatch: 'full' },
+  { path: 'chessboard/:isWhite', component: ChessBoardComponent }
 ];
 
 @NgModule({

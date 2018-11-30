@@ -37,6 +37,34 @@ export class BackendService {
     });
   }
 
+  getZugHistorie() {
+    console.log("getZugHistorie");
+    return this.http.get(this.gameEngineering + "getZugHistorie/7/", {
+      responseType: "text"
+    });
+  }
+
+  neuesSpiel() {
+    console.log("neuesSpiel");
+    return this.http.get(this.gameEngineering + "admin/neuesSpiel/7", {
+      responseType: "text"
+    });
+  }
+
+  ladenSpiel() {
+    console.log("ladenSpiel");
+    return this.http.get(this.gameEngineering + "admin/ladenSpiel/7", {
+      responseType: "text"
+    });
+  }
+
+  speichernSpiel() {
+    console.log("speichernSpiel");
+    return this.http.get(this.gameEngineering + "admin/speichernSpiel/7", {
+      responseType: "text"
+    });
+  }
+
   xmlToJsonObj(data: string): JSON {
     if (parser.validate(data) === true) {
       var jsonObj: any = parser.parse(data);

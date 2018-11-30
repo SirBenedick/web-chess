@@ -2,10 +2,13 @@
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!<br>
-    This is the app component
   </h1>
 </div>
+
 <nav>
-  <a routerLink="/chessboard">chessboard</a>
+  <a [routerLink]="['/chessboard', 1]">white </a>
+
+  <a [routerLink]="['/chessboard', 0]">black</a>
 </nav>
+
 <router-outlet></router-outlet>

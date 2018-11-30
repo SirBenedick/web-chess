@@ -1,5 +1,8 @@
 <h1>{{ updateMessage }}</h1>
 <button (click)="getAktuelleBelegung()">Aktuelle Belegung</button>
+<button (click)="neuesSpiel()">Neues Spiel</button>
+<button (click)="speichernSpiel()">Speichern Spiel</button>
+<button (click)="ladenSpiel()">Lade Spiel</button>
 
 <div class="chessboard">
 <!-- 8 -->
@@ -75,3 +78,12 @@
 <div id="g1" [ngClass] = "chessBoard.tiles.g1.class" (click)="onSelect(chessBoard.tiles.g1)" [innerHTML]="chessBoard.tiles.g1.piece"></div>
 <div id="h1" [ngClass] = "chessBoard.tiles.h1.class" (click)="onSelect(chessBoard.tiles.h1)" [innerHTML]="chessBoard.tiles.h1.piece"></div>
 </div>
+
+
+
+<h2>Zug Historie</h2>
+<ul class="zugHistorie">
+  <li *ngFor="let zug of zugHistorie" (click)="spieleBisZug(zug)">
+    <span class="badge">{{zug.zug}}</span>
+  </li>
+</ul>
