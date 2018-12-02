@@ -83,7 +83,7 @@
 
 <h2>Zug Historie</h2>
 <ul class="zugHistorie">
-  <li *ngFor="let zug of zugHistorie" (click)="spieleBisZug(zug)">
+  <li *ngFor="let zug of zugHistorie" (click)="spieleBisZug(zug.zug)">
     <span class="badge">{{zug.zug}}</span>
   </li>
 </ul>

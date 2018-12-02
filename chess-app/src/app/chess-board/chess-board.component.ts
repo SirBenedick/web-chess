@@ -72,10 +72,12 @@ export class ChessBoardComponent implements OnInit {
         console.log(historie);
         //nach dem ersten Zug ist das XML anders
         if (historie["properties"][1] == undefined) {
-          this.zugHistorie.push({ zug: historie["properties"]["entry"][0] });
+          this.zugHistorie.push({
+            zug: String(historie["properties"]["entry"][0])
+          });
         } else {
           historie["properties"].forEach(element => {
-            this.zugHistorie.push({ zug: element["entry"][0] });
+            this.zugHistorie.push({ zug: String(element["entry"][0]) });
           });
         }
       }
@@ -86,11 +88,6 @@ export class ChessBoardComponent implements OnInit {
         this.whitesTurn = false;
       }
     });
-  }
-
-  spieleBisZug(zug) {
-    console.log("spiele bis" + zug.zug);
-    // wenn Zug aus der Zughistorie ausgewählt wird muss bis dahin gespielt werden
   }
 
   //Methode reagiert auf auswählen der chess-board.component.html
@@ -147,6 +144,49 @@ export class ChessBoardComponent implements OnInit {
     }
   }
 
+  spieleBisZug(bisZug) {
+    console.log("spiele bis: " + bisZug);
+    let oldZugHistorie = this.zugHistorie;
+    // wenn Zug aus der Zughistorie ausgewählt wird muss bis dahin gespielt werden
+
+    //sobald ein neues Spiel erstellt wurde soll rekursiv die "oldZugHistorie" abgearbeitet werden
+    console.log("neuesSpielspeileBisZug");
+    let obs: Observable<string> = this.backendService.neuesSpiel();
+
+    obs.subscribe(data => {
+      console.log("observable fetched neuesSpiel");
+      this.chessBoard.clearAllHighlights();
+
+      let bisFrom = bisZug.slice(1, 3);
+      let bisTo = bisZug.slice(4, 6);
+      console.log("Aufruf spiele obs " + bisFrom + bisTo);
+      this.spieleBisObs(bisFrom, bisTo, oldZugHistorie, 0);
+    });
+  }
+
+  spieleBisObs(bisFrom: string, bisTo: string, oldZugHistorie, index) {
+    console.log("spieleBisObs: " + index);
+    //die herangehensweise ist nicht sehr schön dcoch was besseres viel spontan nicht ein
+    let from = oldZugHistorie[index].zug.slice(1, 3);
+    let to = oldZugHistorie[index].zug.slice(4, 6);
+
+    // console.log("Aufruf spiele obs " + from + to);
+    // wir lassen ziehen und bei erhalt von einer Antwort ziehen wir nochmal, es sei denn wir haben den letzten Zug gezogen
+    let obs: Observable<string> = this.backendService.ziehe(from, to);
+
+    obs.subscribe(data => {
+      console.log("index: " + index);
+
+      if (bisFrom == from && bisTo == to) {
+        console.log("Letzer Zug erledigt");
+        this.getAktuelleBelegung();
+      } else {
+        console.log("Zieht weiter");
+        this.spieleBisObs(bisFrom, bisTo, oldZugHistorie, (index += 1));
+      }
+    });
+  }
+
   //Backend Admin Mehtoden
   neuesSpiel() {
     console.log("neuesSpiel");
@@ -158,6 +198,7 @@ export class ChessBoardComponent implements OnInit {
       this.getAktuelleBelegung();
       this.chessBoard.clearAllHighlights();
     });
+    this.zugHistorie = [];
   }
 
   ladenSpiel() {
@@ -184,7 +225,6 @@ export class ChessBoardComponent implements OnInit {
 
   /*
 TO-DO
--Zughistorie
 -play as black or white or both
 -ausgabe:
   "nicht am zug"
