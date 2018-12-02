@@ -208,8 +208,22 @@ export class ChessBoardComponent implements OnInit {
     obs.subscribe(data => {
       console.log("observable fetched ladenSpiel");
       // console.log(data);
-      this.chessBoard.clearBoard();
-      this.getAktuelleBelegung();
+
+      //richtig eklige Lösung für sein komisches Backend
+      let obsSpeichern: Observable<
+        string
+      > = this.backendService.speichernSpiel();
+
+      obsSpeichern.subscribe(data => {
+        console.log("observable fetched speichernSpiel");
+        let obsLaden: Observable<string> = this.backendService.ladenSpiel();
+
+        obsLaden.subscribe(data => {
+          console.log("observable fetched ladenSpiel");
+          this.chessBoard.clearBoard();
+          this.getAktuelleBelegung();
+        });
+      });
     });
   }
 
@@ -230,6 +244,7 @@ TO-DO
   "nicht am zug"
 -polling
 
+beim Laden eines Spieles 
 -Spiel gewonnen 
 
 Its a features not a bug:
