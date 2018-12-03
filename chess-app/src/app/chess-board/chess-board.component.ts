@@ -48,13 +48,13 @@ export class ChessBoardComponent implements OnInit {
       //wenn ich am Zug bin lädt es nicht neu (sonst verschwinden die highligths)
       if (!(this.playingAsWhite == this.whitesTurn)) {
         this.getAktuelleBelegung();
-        if(this.playingAsWhite){
-          this.updateMessage = "Schwarz ist gerade am ziehen."
-        }else{
-          this.updateMessage = "Weiß ist gerade am ziehen."
+        if (this.playingAsWhite) {
+          this.updateMessage = "Schwarz ist gerade am ziehen.";
+        } else {
+          this.updateMessage = "Weiß ist gerade am ziehen.";
         }
-      }else{
-        this.updateMessage = "Du bist am Zug."
+      } else {
+        this.updateMessage = "Du bist am Zug.";
       }
     });
   }
@@ -241,7 +241,9 @@ export class ChessBoardComponent implements OnInit {
       // console.log(data);
 
       //richtig eklige Lösung für sein komisches Backend
-      let obsSpeichern: Observable< string > = this.backendService.speichernSpiel();
+      let obsSpeichern: Observable<
+        string
+      > = this.backendService.speichernSpiel();
 
       obsSpeichern.subscribe(data => {
         console.log("observable fetched speichernSpiel");
@@ -266,10 +268,4 @@ export class ChessBoardComponent implements OnInit {
       this.updateMessage = "Spiel wurde gespeichert";
     });
   }
-
-  /*
-TO-DO
--polling
-
-*/
 }

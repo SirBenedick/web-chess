@@ -18,13 +18,6 @@ We are using Node.JS with Angular.
 
 
 ### To-Do
-* Gamehistorie
-* playing as black or white (or both)
-* Message "Not Your turn"
-* Polling
+* Nothing  has to be added
+* Styling would be great
 
-* Game won 
-
-Its a features not a bug:
-* after loading a game all pieces are white
-* -->XMLtoJSON needs to be fixed
