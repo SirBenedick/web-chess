@@ -95,17 +95,7 @@ export class ChessBoardComponent implements OnInit {
     console.log("onSelect");
     console.log(tile);
 
-    //check whos turn
-    /*
-     *
-     *TO-DO
-    use
-    this.whitesTurn and ... or just count the turns
-     *
-     *
-     */
-
-    // wenn schon makiert -> ziehe, sonst makiere
+    // wenn schon makiert -> ziehe
     if (tile.class.highlight) {
       let obs: Observable<string> = this.backendService.ziehe(
         this.lastClick.value,
@@ -124,23 +114,42 @@ export class ChessBoardComponent implements OnInit {
           this.chessBoard.clearAllHighlights();
         }
       });
-    } else {
-      this.lastClick = tile;
-      let obs: Observable<string> = this.backendService.getErlaubteZuege(
-        tile["value"]
-      );
+    } else { 
+      //makiere mögliche Züge
+      //nur wer am Zug ist und seine Farbe auswählt kriegt die möglichen Züge angezeigt
+      if (
+        (this.whitesTurn &&
+          this.playingAsWhite &&
+          pieces.pieceIsWhite[tile.piece]) ||
+        (!this.whitesTurn &&
+          !this.playingAsWhite &&
+          !pieces.pieceIsWhite[tile.piece])
+      ) {
+        this.lastClick = tile;
+        let obs: Observable<string> = this.backendService.getErlaubteZuege(
+          tile["value"]
+        );
 
-      obs.subscribe(data => {
-        let zuege: JSON = this.backendService.xmlToJsonObj(data);
+        obs.subscribe(data => {
+          let zuege: JSON = this.backendService.xmlToJsonObj(data);
 
-        if (zuege == undefined) {
-          console.log("Ungültiger Zug");
-          this.chessBoard.clearAllHighlights();
-          this.updateMessage = "Ungültiger Zug";
+          if (zuege == undefined) {
+            console.log("Ungültiger Zug");
+            this.chessBoard.clearAllHighlights();
+            this.updateMessage = "Ungültiger Zug";
+          } else {
+            this.chessBoard.highlightTiles(zuege);
+          }
+        });
+      } else {
+        if (this.whitesTurn) {
+          this.updateMessage =
+            "Weiß ist dran und kann nur weiße Figuren ziehen!";
         } else {
-          this.chessBoard.highlightTiles(zuege);
+          this.updateMessage =
+            "Schwarz ist dran und kann nur schwarze Figuren ziehen!";
         }
-      });
+      }
     }
   }
 
@@ -239,18 +248,7 @@ export class ChessBoardComponent implements OnInit {
 
   /*
 TO-DO
--play as black or white or both
--ausgabe:
-  "nicht am zug"
 -polling
-
-beim Laden eines Spieles 
--Spiel gewonnen 
-
-Its a features not a bug:
-
--alle Figuren sind nach Spiel laden weiss
--->XMLtoJSON muss angepasst werden
 
 */
 }
