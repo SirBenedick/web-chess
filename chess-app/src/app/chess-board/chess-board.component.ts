@@ -6,6 +6,7 @@ import { BackendService } from "../backend.service";
 const pieces = require("./chess-pieces.json");
 import { ChessBoard } from "./chess-board";
 import { Observable } from "rxjs";
+import { interval } from "rxjs";
 
 @Component({
   selector: "app-chess-board",
@@ -22,6 +23,7 @@ export class ChessBoardComponent implements OnInit {
   playingAsWhite: boolean = true;
   lastClick;
   whitesTurn: boolean = true;
+  private alive: boolean = true;
 
   //Objekte die an die View (chess-board.component.html) gebunden sind
   chessBoard: ChessBoard = new ChessBoard();
@@ -39,6 +41,26 @@ export class ChessBoardComponent implements OnInit {
         this.playingAsWhite = false;
       }
     });
+
+    // Observable wird erstellt welches im Inttervall von 5s aktiv wird
+    const secondsCounter = interval(5000);
+    secondsCounter.subscribe(() => {
+      //wenn ich am Zug bin lädt es nicht neu (sonst verschwinden die highligths)
+      if (!(this.playingAsWhite == this.whitesTurn)) {
+        this.getAktuelleBelegung();
+        if(this.playingAsWhite){
+          this.updateMessage = "Schwarz ist gerade am ziehen."
+        }else{
+          this.updateMessage = "Weiß ist gerade am ziehen."
+        }
+      }else{
+        this.updateMessage = "Du bist am Zug."
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.alive = false; // switches your IntervalObservable off
   }
 
   getAktuelleBelegung() {
@@ -114,7 +136,7 @@ export class ChessBoardComponent implements OnInit {
           this.chessBoard.clearAllHighlights();
         }
       });
-    } else { 
+    } else {
       //makiere mögliche Züge
       //nur wer am Zug ist und seine Farbe auswählt kriegt die möglichen Züge angezeigt
       if (
@@ -219,9 +241,7 @@ export class ChessBoardComponent implements OnInit {
       // console.log(data);
 
       //richtig eklige Lösung für sein komisches Backend
-      let obsSpeichern: Observable<
-        string
-      > = this.backendService.speichernSpiel();
+      let obsSpeichern: Observable< string > = this.backendService.speichernSpiel();
 
       obsSpeichern.subscribe(data => {
         console.log("observable fetched speichernSpiel");
@@ -243,6 +263,7 @@ export class ChessBoardComponent implements OnInit {
     obs.subscribe(data => {
       console.log("observable fetched speichernSpiel");
       // console.log(data);
+      this.updateMessage = "Spiel wurde gespeichert";
     });
   }
 
