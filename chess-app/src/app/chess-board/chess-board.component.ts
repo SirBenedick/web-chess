@@ -23,7 +23,7 @@ export class ChessBoardComponent implements OnInit {
   playingAsWhite: boolean = true;
   lastClick;
   whitesTurn: boolean = true;
-  private alive: boolean = true;
+
 
   //Objekte die an die View (chess-board.component.html) gebunden sind
   chessBoard: ChessBoard = new ChessBoard();
@@ -31,7 +31,7 @@ export class ChessBoardComponent implements OnInit {
   zugHistorie = [];
 
   ngOnInit(): void {
-    this.neuesSpiel();
+    // this.neuesSpiel();
     this.getAktuelleBelegung();
 
     this.route.params.subscribe(params => {
@@ -57,10 +57,6 @@ export class ChessBoardComponent implements OnInit {
         this.updateMessage = "Du bist am Zug.";
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.alive = false; // switches your IntervalObservable off
   }
 
   getAktuelleBelegung() {
@@ -188,6 +184,7 @@ export class ChessBoardComponent implements OnInit {
       console.log("observable fetched neuesSpiel");
       this.chessBoard.clearAllHighlights();
 
+      //Bsp.: bisZug "Be2-e4" -> bisFrom "e2", bisTo "e4" 
       let bisFrom = bisZug.slice(1, 3);
       let bisTo = bisZug.slice(4, 6);
       console.log("Aufruf spiele obs " + bisFrom + bisTo);

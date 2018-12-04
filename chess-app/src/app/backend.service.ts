@@ -68,6 +68,7 @@ export class BackendService {
   xmlToJsonObj(data: string): JSON {
     if (parser.validate(data) === true) {
       var jsonObj: any = parser.parse(data);
+      console.log(jsonObj);
       return jsonObj;
     }
   }
