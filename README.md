@@ -5,7 +5,6 @@ A school project for getting to know more about web development.
 We are using Node.JS with Angular.
 
 
-![](https://media.giphy.com/media/1SzMTISvQ5d8Fwy4lC/giphy.gif)
 
 
 ## Setup
